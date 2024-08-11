@@ -11,6 +11,7 @@ const ProductImage = () => {
           className="swiper"
           spaceBetween={50}
           slidesPerView={4}
+          loop={true}
           style={{ maxWidth: "550px" }}
         >
           <div class="swiper-button-prev"></div>
