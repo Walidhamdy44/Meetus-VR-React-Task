@@ -31,6 +31,8 @@ a {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 html {
   scroll-behavior: smooth;
@@ -233,3 +235,286 @@ $--footer-bg: #3c3c3b;
 }
 
 // start bread back
+
+.bread-back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  span:not(span:last-of-type) {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.bread-container {
+  padding: 30px 0;
+  border-bottom: 2px solid #525250;
+}
+
+// start prodcut-details
+
+.prodcut-details {
+  padding: 30px 0;
+  .container {
+    display: flex;
+    align-items: start;
+    gap: 30px;
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
+    .image {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex-basis: 48%;
+      img {
+        max-width: 100%;
+        width: 568;
+        height: 608px;
+        border-radius: 14px;
+      }
+      .swiper {
+        img {
+          max-width: 100%;
+          height: 120px;
+          width: 120px;
+          border-radius: 14px;
+          cursor: grab;
+        }
+        .swiper-slide {
+          width: 120px !important;
+          margin-right: 0 !important;
+        }
+        .swiper-wrapper {
+          gap: 20px;
+        }
+      }
+    }
+    .info > div:not(:last-child) {
+      border-bottom: 1px solid rgb(208, 208, 208);
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 48%;
+
+      .price {
+        display: flex;
+        align-items: start;
+        gap: 20px;
+        flex-direction: column;
+        padding-bottom: 20px;
+        margin-top: 10px;
+        p {
+          font-weight: bold;
+        }
+        h3 {
+          color: gray;
+        }
+        .rate {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          div {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+          }
+          span:nth-child(2) {
+            color: $--black-color;
+            font-weight: bold;
+            font-size: 18px;
+          }
+          span:nth-child(3) {
+            color: gray;
+            font-weight: bold;
+          }
+        }
+        .price-n {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          font-weight: bold;
+          span:nth-child(1) {
+            color: $--secondary-color;
+            font-size: 30px;
+            font-weight: 800;
+            span {
+              font-size: 20px;
+            }
+          }
+          span:nth-child(2) {
+            color: gray;
+            font-size: 20px;
+            font-weight: bold;
+            position: relative;
+            &:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100%;
+              height: 2px;
+              background-color: gray;
+              opacity: 0.5;
+              transition: 0.4s;
+            }
+          }
+          span:nth-child(3) {
+            width: fit-content;
+            background-color: $--primary-color;
+            padding: 7px 15px;
+          }
+        }
+      }
+      .size {
+        padding: 13px 0;
+      }
+      .select-size {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 10px 0;
+        div {
+          position: relative;
+          input[type="radio"] {
+            display: none;
+          }
+          label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            cursor: pointer;
+            border: 1px solid rgb(198, 196, 196);
+            color: $--secondary-color;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+          }
+          input[type="radio"]:checked + label {
+            background-color: #ececec;
+            color: $--black-color;
+          }
+        }
+      }
+
+      .color {
+        padding: 13px 0;
+        .select-color {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          padding: 10px 0;
+          div {
+            position: relative;
+            input[type="radio"] {
+              display: none;
+            }
+            label {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 80px;
+              height: 80px;
+              border-radius: 40px;
+              cursor: pointer;
+              color: $--secondary-color;
+              transition: background-color 0.3s ease;
+              font-weight: bold;
+            }
+            input[type="radio"]:checked + label {
+              outline: 2px solid $--secondary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.add {
+  padding: 13px 0;
+}
+.quantity-selector {
+  h3 {
+    font-weight: bold;
+  }
+
+  .counter {
+    display: flex;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ececec;
+    border-radius: 30px;
+    width: 300px;
+    padding: 3px;
+
+    .decrement,
+    .increment {
+      background-color: $--primary-color;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #fdd835;
+      }
+    }
+
+    .quantity {
+      width: 50px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0 10px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+
+    .add-to-cart,
+    .pickup-from-store {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &.add-to-cart {
+        background-color: $--secondary-color;
+        color: white;
+
+        &:hover {
+          background-color: #7b1fa2;
+        }
+      }
+
+      &.pickup-from-store {
+        background-color: $--primary-color;
+        color: black;
+
+        &:hover {
+          background-color: #fdd835;
+        }
+      }
+    }
+  }
+}
