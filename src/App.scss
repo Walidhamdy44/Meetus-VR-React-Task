@@ -156,6 +156,9 @@ $--footer-bg: #3c3c3b;
     img {
       max-width: 86px;
     }
+    @media (max-width: 991px) {
+      display: none;
+    }
   }
   .inp {
     position: relative;
@@ -192,6 +195,11 @@ $--footer-bg: #3c3c3b;
         font-weight: bold;
         cursor: pointer;
       }
+      li:not(.cart) {
+        @media (max-width: 991px) {
+          display: none;
+        }
+      }
       .cart {
         position: relative;
       }
@@ -205,9 +213,6 @@ $--footer-bg: #3c3c3b;
         padding: 2px 5px;
         font-size: 12px;
       }
-    }
-    @media (max-width: 991px) {
-      display: none;
     }
   }
 }
@@ -275,6 +280,7 @@ $--footer-bg: #3c3c3b;
     gap: 30px;
     @media (max-width: 991px) {
       flex-direction: column;
+      overflow: hidden;
     }
     .image {
       display: flex;
@@ -286,9 +292,12 @@ $--footer-bg: #3c3c3b;
         width: 568px;
         height: 608px;
         border-radius: 14px;
-
         @media (max-width: 991px) {
-          max-width: 375px;
+          max: auto;
+          height: auto;
+        }
+        @media (max-width: 510px) {
+          max-width: 360px;
           height: auto;
         }
       }
@@ -303,8 +312,10 @@ $--footer-bg: #3c3c3b;
         .swiper-slide {
           width: 120px !important;
           margin-right: 0 !important;
-          @media (max-width: 991px) {
-            width: 60px !important;
+          overflow-y: scroll;
+          scrollbar-width: none;
+          @media (max-width: 767px) {
+            width: 105px !important;
           }
         }
         .swiper-wrapper {
@@ -398,6 +409,7 @@ $--footer-bg: #3c3c3b;
         padding: 13px 0;
       }
       .select-size {
+        overflow: hidden;
         display: flex;
         align-items: center;
         gap: 20px;
@@ -604,6 +616,7 @@ $--footer-bg: #3c3c3b;
       left: 15px;
       width: 35px;
       height: 35px;
+      z-index: 7869;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -851,8 +864,8 @@ $--footer-bg: #3c3c3b;
 .cart-sidebar {
   position: fixed;
   top: 0;
-  right: -490px; /* مخفي بشكل افتراضي خارج الشاشة */
-  width: 450px;
+  right: -490px;
+  width: 410px;
   height: 100%;
   background-color: #fff;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
@@ -884,6 +897,12 @@ $--footer-bg: #3c3c3b;
 }
 
 .cart-sidebar {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  @media (max-width: 600px) {
+    padding: 40px 0 40px 34px;
+  }
+
   h4 {
     padding: 30px 0;
     font-size: 23px;
@@ -964,5 +983,25 @@ $--footer-bg: #3c3c3b;
       color: $--secondary-color;
       font-weight: bold;
     }
+  }
+}
+
+.no-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 28px;
+}
+
+.img-hover {
+  overflow: hidden;
+  border-radius: 30px;
+  img {
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  &:hover img {
+    transform: scale(1.2);
   }
 }

@@ -1,16 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const ProductItemBox = ({ item }) => {
   return (
     <div className="product-box">
-      <div className="img">
+      <div className="img img-hover">
         <div className="img-abs">
           <img src="/images/Group 338.svg" alt={item.description} />
         </div>
-        <Link to={`/products/${item.id}`}>
-          <img src={item.img} alt={item.description} />
-        </Link>
+
+        <img src={item.img} alt={item.description} />
       </div>
       <div className="text-1">
         <p>{item.title}</p>

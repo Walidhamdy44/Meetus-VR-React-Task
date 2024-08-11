@@ -4,7 +4,7 @@ import "swiper/css";
 
 const ProductImage = () => {
   return (
-    <div className="image">
+    <div className="image img-hover">
       <img src="/images/img1.webp" alt="adidas shirt" />
       <div>
         <Swiper

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Context } from "../../../services/providers/ContextProvider";
+import { Context } from "../../../services/providers/ProductProvider";
+import toast from "react-hot-toast";
 
 const MinNavBar = () => {
   const { items, updateItems } = useContext(Context);
@@ -8,10 +9,15 @@ const MinNavBar = () => {
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
-
+  // Remove all Elements from the cart
   const removeItem = (id) => {
     const updatedItems = items.filter((item) => item.id !== id);
     updateItems(updatedItems);
+    toast.success("Product Removed successfully");
+  };
+  // Get Total Price (9.999 * number of items)
+  const getTotalPrice = () => {
+    return items.reduce((total, item) => total + item.quantity * 9.999, 0);
   };
 
   return (
@@ -34,7 +40,7 @@ const MinNavBar = () => {
               <img src="/images/Path 771.svg" alt="Wishlist icon" />
               <span>Wishlist</span>
             </li>
-            <li>
+            <li className="img-hover">
               <img src="/images/Path 773.svg" alt="Login icon" />
               <span>Login</span>
             </li>
@@ -51,32 +57,36 @@ const MinNavBar = () => {
         <div>
           <h4>Cart Summary</h4>
         </div>
-        {items.map((item) => (
-          <div key={item.id} className="cart-item">
-            <div className="img">
-              <img src="/images/img1.webp" alt="item" />
-            </div>
-            <div className="price">
-              <p>
-                Adidas black t-shirt lorem ipsum dolor sit amet, consectetuer
-                adipiscing
-              </p>
-              <div className="price-1">
-                <div className="price-2">
-                  <span>
-                    Quantity: <span>{item.quantity}</span>
-                  </span>
-                  <span>9.999 LE</span>
-                </div>
-                <div className="remove">
-                  <button onClick={() => removeItem(item.id)}>Remove</button>
+        {items.length === 0 ? (
+          <div className="no-product">No product in cart</div>
+        ) : (
+          items.map((item) => (
+            <div key={item.id} className="cart-item">
+              <div className="img img-hover">
+                <img src="/images/img1.webp" alt="item" />
+              </div>
+              <div className="price">
+                <p>
+                  Adidas black t-shirt lorem ipsum dolor sit amet, consectetuer
+                  adipiscing
+                </p>
+                <div className="price-1">
+                  <div className="price-2">
+                    <span>
+                      Quantity: <span>{item.quantity}</span>
+                    </span>
+                    <span>9.999 LE</span>
+                  </div>
+                  <div className="remove">
+                    <button onClick={() => removeItem(item.id)}>Remove</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
         <div className="total">
-          Total: <span>22.99 LE</span>
+          Total: <span>{getTotalPrice().toFixed(3)} LE</span>
         </div>
       </div>
     </div>
