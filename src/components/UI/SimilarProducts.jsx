@@ -2,7 +2,7 @@ import React from "react";
 import ProductItemBox from "./ProductItemBox";
 
 // Get Dummy Data
-import { data } from "../../api/data";
+import { data } from "../../services/api/data";
 
 const SimilarProducts = () => {
   return (

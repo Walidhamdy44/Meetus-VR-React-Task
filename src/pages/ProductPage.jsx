@@ -7,7 +7,7 @@ import Footer from "../components/layout/Footer/Footer";
 
 const ProductPage = () => {
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div>
       <NavBar />
       <div className="bread-container">
         <BreadBack />

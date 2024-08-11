@@ -190,6 +190,7 @@ $--footer-bg: #3c3c3b;
         align-items: center;
         gap: 10px;
         font-weight: bold;
+        cursor: pointer;
       }
       .cart {
         position: relative;
@@ -831,6 +832,137 @@ $--footer-bg: #3c3c3b;
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+  }
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-items ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -490px; /* مخفي بشكل افتراضي خارج الشاشة */
+  width: 450px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.close-btn {
+  font-size: 24px;
+  cursor: pointer;
+  font-weight: bold;
+  color: gray;
+  text-align: right;
+  margin-left: 50px;
+}
+
+.cart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    color: $--secondary-color;
+  }
+}
+
+.cart-sidebar {
+  h4 {
+    padding: 30px 0;
+    font-size: 23px;
+    font-weight: bold;
+  }
+  .cart-item {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    justify-content: space-between;
+    .price {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      flex-basis: 55%;
+      p {
+        font-weight: bold;
+        padding: 0 0 10px 0;
+      }
+      .price-1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        span {
+          font-weight: bold;
+          padding: 10px 0;
+          span {
+            color: $--secondary-color;
+          }
+        }
+      }
+      .price-2 {
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+    .remove button {
+      cursor: pointer;
+      font-weight: bold;
+      color: black;
+      background-color: $--primary-color;
+      transition: 0.4s;
+      padding: 10px;
+      border: none;
+      border-radius: 12px;
+      &:hover {
+        background-color: #d4c710;
+      }
+    }
+    .img {
+      border-radius: 12px;
+      flex-basis: 40%;
+      overflow: hidden;
+      border: 2px solid gray;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      img {
+        width: 150px;
+        border-radius: 12px;
+        height: 150px;
+      }
+    }
+  }
+  .total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    font-weight: 500;
+    font-size: 24px;
+    span {
+      color: $--secondary-color;
+      font-weight: bold;
     }
   }
 }
