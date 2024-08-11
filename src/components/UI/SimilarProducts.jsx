@@ -1,8 +1,8 @@
-import React from "react";
-import ProductItemBox from "./ProductItemBox";
-
+import React, { Suspense, lazy } from "react";
 // Get Dummy Data
 import { data } from "../../services/api/data";
+// Lazy load ProductItemBox
+const ProductItemBox = lazy(() => import("./ProductItemBox"));
 
 const SimilarProducts = () => {
   return (
@@ -12,12 +12,14 @@ const SimilarProducts = () => {
         <p>You may like these products also</p>
       </div>
       <div className="products-container">
-        {
-          // Mapping For All Fike Data -->
-          data.map((item, index) => {
-            return <ProductItemBox item={item} key={index} />;
-          })
-        }
+        <Suspense fallback={<div>Loading...</div>}>
+          {
+            // Mapping For All Fike Data -->
+            data.map((item, index) => {
+              return <ProductItemBox item={item} key={index} />;
+            })
+          }
+        </Suspense>
       </div>
     </div>
   );
